@@ -1,28 +1,28 @@
 package com.phincon.rest.ws.inquiryacc.controller;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.phincon.rest.ws.inquiryacc.model.dto.request.CCRequest;
 import com.phincon.rest.ws.inquiryacc.model.dto.request.CCRequestBody;
-import com.phincon.rest.ws.inquiryacc.model.dto.response.CCResponse;
-import com.phincon.rest.ws.inquiryacc.service.CreditCartService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.io.File;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/web/services/creditcard")
 public class CreditCartController {
 
-    @Autowired
-    private CreditCartService creditCartService;
+    public final String CREDIT_CARD_RESPONSE = "src/main/resources/specification/CreditCard_cardnumber_response.json";
+
     @PostMapping
-    public ResponseEntity<CCResponse> creditCard(
-            @RequestHeader(value = "service") String service,
-            @RequestHeader(value = "traceID") String traceID,
-            @RequestHeader(value = "channel") String channel,
-            @RequestHeader(value = "timestamp") String timestamp,
-            @RequestBody CCRequestBody request) throws Exception
+    public ResponseEntity<Map<String, Object>> creditCard(@Valid @RequestBody CCRequest request) throws Exception
     {
-        CCResponse ccResponse = creditCartService.creditCard(request);
-        return new ResponseEntity<>(ccResponse, HttpStatus.OK);
+        ObjectMapper mapper = new ObjectMapper();
+        Map<String, Object> response = mapper.readValue(new File(CREDIT_CARD_RESPONSE), new TypeReference<Map<String, Object>>() {});
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }

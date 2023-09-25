@@ -1,27 +1,20 @@
 package com.phincon.rest.ws.inquiryacc.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.phincon.rest.ws.inquiryacc.model.dto.response.MutationResponseTemplate;
-import com.phincon.rest.ws.inquiryacc.service.MutationService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
+
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import java.io.File;
 
 import static org.hamcrest.Matchers.hasKey;
-import static org.mockito.Mockito.when;
 
 @WebMvcTest(MutationController.class)
 public class MutationControllerTest {
 
-    @MockBean
-    private MutationService mutationService;
 
     @Autowired
     private MutationController mutationController;
@@ -38,11 +31,6 @@ public class MutationControllerTest {
         String STRDATE ="01092023";
         String ENDDATE ="18092023";
         String STRINDEX ="0";
-
-        ObjectMapper mapper = new ObjectMapper();
-        MutationResponseTemplate mutations = mapper.readValue(new File("src/main/resources/specification/Mutasi_response.json"), MutationResponseTemplate.class);
-
-        when(mutationService.accountHistory(ACCTNBR, ACCTPP, STRDATE, ENDDATE, STRINDEX)).thenReturn(mutations);
 
         mockMvc.perform(MockMvcRequestBuilders.get("/web/services/ACCTHST/ACCTHST/{ACCTNBR}/{ACCTPP}/{STRDATE}/{ENDDATE}/{STRINDEX}",
                 ACCTNBR, ACCTPP, STRDATE, ENDDATE, STRINDEX))
