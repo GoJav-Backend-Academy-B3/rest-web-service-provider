@@ -1,4 +1,4 @@
-package com.phincon.rest.ws.inquiryacc.controller;
+package com.phincon.rest.ws.controller;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -24,6 +24,5 @@ public class AccountController {
         ObjectMapper mapper = new ObjectMapper();
         Map<String,Object> inquiryAccountResponse = mapper.readValue(new File(INQUIRY_ACC_RESPONSE), new TypeReference<Map<String, Object>>() {});
         return new ResponseEntity<>(inquiryAccountResponse, HttpStatus.OK);
-
     }
 }

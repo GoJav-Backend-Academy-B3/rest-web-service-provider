@@ -1,4 +1,4 @@
-package com.phincon.rest.ws.inquiryacc;
+package com.phincon.rest.ws;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

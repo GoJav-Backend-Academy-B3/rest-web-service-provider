@@ -1,10 +1,10 @@
-package com.phincon.rest.ws.inquiryacc.controller;
+package com.phincon.rest.ws.controller;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.phincon.rest.ws.inquiryacc.model.dto.request.CCRequest;
-import com.phincon.rest.ws.inquiryacc.model.dto.request.CCRequestBody;
-import com.phincon.rest.ws.inquiryacc.model.dto.request.CCRequestHeader;
+import com.phincon.rest.ws.model.dto.request.CCRequest;
+import com.phincon.rest.ws.model.dto.request.CCRequestBody;
+import com.phincon.rest.ws.model.dto.request.CCRequestHeader;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.phincon.rest.ws.inquiryacc.controller;
+package com.phincon.rest.ws.controller;
 
 
 import org.junit.jupiter.api.DisplayName;

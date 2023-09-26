@@ -1,4 +1,4 @@
-package com.phincon.rest.ws.inquiryacc.model.dto.request;
+package com.phincon.rest.ws.model.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
